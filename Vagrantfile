@@ -16,6 +16,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
+  # Set the hostname.
+  # config.vm.hostname = "dionaea-vagrant"
+
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
@@ -55,8 +58,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+  config.vm.provider :virtualbox do |vb|
+    vb.name = "dionaea-vagrant"
+  end
+
   # Enable provisioning
-  config.vm.provision "shell", inline: "wget -q -O /tmp/setupDionaea.sh https://raw.github.com/ikoniaris/dionaea-vagrant/master/setupDionaea.sh"
-  config.vm.provision "shell", inline: "aptitude -y install dos2unix && dos2unix /tmp/setupDionaea.sh"
-  config.vm.provision "shell", inline: "cd /tmp/ && sh setupDionaea.sh"
+  config.vm.provision "shell", inline: "cp /vagrant/*.sh /tmp/"
+  config.vm.provision "shell", inline: "aptitude -y install dos2unix && dos2unix /tmp/*.sh"
+  config.vm.provision "shell", inline: "cd /tmp/ && sh setupDionaea.sh && sh configureDionaea.sh && sh runDionaea.sh"
+  config.vm.provision "shell", inline: "rm /tmp/*.sh"
 end
