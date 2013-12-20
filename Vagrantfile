@@ -57,6 +57,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Enable provisioning
   config.vm.provision "shell", inline: "wget -q -O /tmp/setupDionaea.sh https://raw.github.com/ikoniaris/dionaea-vagrant/master/setupDionaea.sh"
-  config.vm.provision "shell", inline: "aptitude -y install dos2unix && && dos2unix /tmp/setupDionaea.sh"
+  config.vm.provision "shell", inline: "aptitude -y install dos2unix && dos2unix /tmp/setupDionaea.sh"
   config.vm.provision "shell", inline: "cd /tmp/ && sh setupDionaea.sh"
 end

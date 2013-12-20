@@ -90,7 +90,7 @@ autoreconf -vi
 --with-pcap-lib=/opt/dionaea/lib/
 make
 make install
-cd
+cd ~
 
 #Install p0f
 aptitude -y install p0f
