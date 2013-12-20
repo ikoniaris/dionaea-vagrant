@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 #Update & upgrade system
 aptitude update && aptitude -y safe-upgrade
