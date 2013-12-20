@@ -56,5 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # information on available options.
 
   # Enable provisioning
+  config.vm.provision "shell", inline: "aptitude -y install dos2unix && dos2unix /vagrant/setupDionaea.sh"
+  config.vm.provision "shell", inline: "dos2unix /vagrant/setupDionaea.sh && dos2unix /vagrant/runDionaea.sh"
   config.vm.provision "shell", path: "setupDionaea.sh"
 end
