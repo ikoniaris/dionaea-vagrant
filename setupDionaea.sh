@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #Update & upgrade system
-aptitude update && aptitude -y safe-upgrade
+aptitude update
+#aptitude -y safe-upgrade
 
 #Install required packages from repos
 aptitude -y install libudns-dev libglib2.0-dev libssl-dev libcurl4-openssl-dev \
@@ -47,7 +48,7 @@ cd Python-3.2.2/
 --enable-ipv6 LDFLAGS="-Wl,-rpath=/opt/dionaea/lib/ -L/usr/lib/x86_64-linux-gnu/"
 make
 make install
-cd..
+cd ..
 
 #Install Cython
 wget http://cython.org/release/Cython-0.15.tar.gz
@@ -90,8 +91,9 @@ autoreconf -vi
 --with-pcap-lib=/opt/dionaea/lib/
 make
 make install
-cd ~
+cd ..
 
 #Install p0f
 aptitude -y install p0f
 
+cd ~
