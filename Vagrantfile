@@ -66,5 +66,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "cp /vagrant/*.sh /tmp/"
   config.vm.provision "shell", inline: "aptitude -y install dos2unix && dos2unix /tmp/*.sh"
   config.vm.provision "shell", inline: "cd /tmp/ && sh setupDionaea.sh && sh configureDionaea.sh && sh runDionaea.sh"
-  config.vm.provision "shell", inline: "rm /tmp/*.sh"
+  config.vm.provision "shell", inline: "cp /tmp/runDionaea.sh /home/vagrant/ && rm /tmp/*.sh"
+  config.vm.provision "shell", inline: "echo '@reboot vagrant /home/vagrant/runDionaea.sh' >> /etc/cron.d/dionaea"
 end
