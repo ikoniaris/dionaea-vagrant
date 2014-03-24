@@ -1,4 +1,4 @@
-dionaea-vagrant
+Dionaea-Vagrant
 ===============
 
 Dionaea-Vagrant provides a Vagrant configuration file (Vagrantfile) and shell scripts to automate the setup of a Dionaea malware honeypot virtual machine.
